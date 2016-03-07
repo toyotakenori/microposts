@@ -2,3 +2,31 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<div class="container-fluid">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Profile
+    </div>
+    <div class="panel-body">
+      <%= @user.profile %>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Area
+    </div>
+    <div class="panel-body">
+      <%= @user.area %>
+    </div>
+  </div>
+
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default"><%= link_to "edit" , edit_user_path(@user) %></button>
+  </div>
+
+</div>
+
+

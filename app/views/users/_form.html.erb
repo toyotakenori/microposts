@@ -1,0 +1,17 @@
+<%= form_for(@user) do |f| %>
+
+  Name:
+  <%= f.text_field :name %>
+
+  Email:
+  <%= f.text_field :email %>
+
+  Profile:
+  <%= f.text_field :profile %>  
+  
+  Area:
+  <%= f.text_field :area %>  
+  
+  <%= f.submit class: "btn btn-sm btn-primary" %>
+  
+<% end %>
