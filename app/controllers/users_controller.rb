@@ -22,7 +22,8 @@ before_action :set_user, only: [:edit, :update]
   
   def edit
     #セッションのidが編集中ページのidに一致しているか確認
-    if @user.id == session[:user_id]
+    #if @user.id == session[:user_id]
+    if @user == current_user
       #一致していたら、そのまま処理を進める。
     else
       #一致していなかったら、エラーを表示して、プロフィール画面に戻る。
