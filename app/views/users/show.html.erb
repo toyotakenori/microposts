@@ -5,8 +5,11 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <span><%= link_to "Followings", followings_user_path, class: "btn btn-xs btn-default" %></span>
+      <span><%= link_to "Followers", followers_user_path, class: "btn btn-xs btn-default" %></span>
     </section>
   </aside>
+  
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
@@ -16,38 +19,34 @@
       </ol>
     <% end %>
   </div>
+  
+  <aside class="col-md-4">
+  </aside>
+  
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Followings (<%= @user.following_users.count %>)</h3>
+      <ol class="followings">
+        <% @followingusers.each do |user| %>
+          <%= user.name %><br>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
+  
+  <aside class="col-md-4">
+  </aside>
+  
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Followers (<%= @user.follower_users.count %>)</h3>
+      <ol class="followers">
+        <% @followerusers.each do |user| %>
+          <%= user.name %><br>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
+  
 </div>
-
-
-<%
-=begin
-%>
-<div class="container-fluid">
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Profile
-    </div>
-    <div class="panel-body">
-      <%= @user.profile %>
-    </div>
-  </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Area
-    </div>
-    <div class="panel-body">
-      <%= @user.area %>
-    </div>
-  </div>
-
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default"><%= link_to "edit" , edit_user_path(@user) %></button>
-  </div>
-
-</div>
-<%
-=end
-%>
 
