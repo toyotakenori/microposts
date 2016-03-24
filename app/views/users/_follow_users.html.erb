@@ -1,0 +1,15 @@
+  <div class="col-md-8">
+    <% if user.microposts.any? %>
+      <h3><%= title %> (<%= users.count %>)</h3>
+      <ol class="followings">
+        <% users.each do |fuser| %>
+          <ol>
+            <span class="user">
+              <%= link_to gravatar_for(fuser, size: 50), fuser %>
+              <%= link_to fuser.name, fuser %><br><br><br>
+            </span>
+          </ol>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>

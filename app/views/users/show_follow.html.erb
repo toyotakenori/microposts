@@ -1,5 +1,10 @@
 <h3><%= @title %></h3>
 
-<% @members.each do |user| %>
-  <%= user.name %><br>
+<% @members.each do |fuser| %>
+  <ol>
+    <span class="user">
+      <%= link_to gravatar_for(fuser, size: 50), fuser %>
+      <%= link_to fuser.name, fuser %><br><br><br>
+    </span>
+  </ol>
 <% end %>

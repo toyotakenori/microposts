@@ -18,35 +18,9 @@
         <%= render @microposts %>
       </ol>
     <% end %>
+
+    <%= render'follow_users',user: @user,users: @followingusers, title: 'Followings' %>
+    <%= render'follow_users',user: @user,users: @followerusers , title: 'Followers' %>
   </div>
-  
-  <aside class="col-md-4">
-  </aside>
-  
-  <div class="col-md-8">
-    <% if @user.microposts.any? %>
-      <h3>Followings (<%= @user.following_users.count %>)</h3>
-      <ol class="followings">
-        <% @followingusers.each do |user| %>
-          <%= user.name %><br>
-        <% end %>
-      </ol>
-    <% end %>
-  </div>
-  
-  <aside class="col-md-4">
-  </aside>
-  
-  <div class="col-md-8">
-    <% if @user.microposts.any? %>
-      <h3>Followers (<%= @user.follower_users.count %>)</h3>
-      <ol class="followers">
-        <% @followerusers.each do |user| %>
-          <%= user.name %><br>
-        <% end %>
-      </ol>
-    <% end %>
-  </div>
-  
 </div>
 
