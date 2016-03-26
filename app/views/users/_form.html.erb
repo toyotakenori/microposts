@@ -1,16 +1,21 @@
 <%= form_for(@user) do |f| %>
-
+  <%= render 'shared/error_messages', object: f.object %> <!-- ここを追加 -->
   Name:
-  <%= f.text_field :name %>
+  <%= f.text_field :name, class: 'form-control' %>
 
   Email:
-  <%= f.text_field :email %>
+  <%= f.text_field :email, class: 'form-control' %>
 
   Profile:
-  <%= f.text_field :profile %>  
+  <%= f.text_field :profile, class: 'form-control' %>  
   
   Area:
-  <%= f.text_field :area %>  
+  <%= f.text_field :area, class: 'form-control' %>
+  
+  Password（修正したい時だけ、再入力してください。）:
+  <%= f.password_field :password, class: 'form-control' %>
+  Password (confirmation)
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
   
   <%= f.submit class: "btn btn-sm btn-primary" %>
   

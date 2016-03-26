@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-before_action :set_user, only: [:edit, :update, :followings, :followers]
+  before_action :set_user, only: [:edit, :update, :followings, :followers]
+  before_action :auth_user, only: [:edit, :update]
+
 
   def show
     @user = User.find(params[:id])
@@ -26,19 +28,19 @@ before_action :set_user, only: [:edit, :update, :followings, :followers]
   def edit
     #セッションのidが編集中ページのidに一致しているか確認
     #if @user.id == session[:user_id]
-    if @user == current_user
+    #if @user == current_user
       #一致していたら、そのまま処理を進める。
-    else
+    #else
       #一致していなかったら、エラーを表示して、プロフィール画面に戻る。
-      flash[:danger] = 'You can only edit yourself.'
-      render 'show'
-    end
+      #flash[:danger] = 'You can only edit yourself.'
+      #render 'show'
+    #end
   end
   
   def update
     if @user.update(user_params)
       # 保存に成功した場合はユーザー画面を表示
-      render 'show' 
+      redirect_to current_user
     else
       # 保存に失敗した場合は編集画面へ戻す
       render 'edit'
@@ -69,4 +71,7 @@ before_action :set_user, only: [:edit, :update, :followings, :followers]
     @user = User.find(params[:id])
   end
   
+  def auth_user
+    redirect_to root_url unless current_user == @user
+  end
 end
