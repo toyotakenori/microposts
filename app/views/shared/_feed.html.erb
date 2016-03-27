@@ -1,5 +1,9 @@
 <% if @feed_items.any? %>
   <ol class="microposts">
-    <%= render @feed_items %>
+    <%#= render @feed_items %>
+    <% @feed_items_kaminari.each do |feeditems| %>
+    <%=  render feeditems %>
+    <% end %>
+    <%= paginate(@feed_items_kaminari) %>
   </ol>
 <% end %>
